@@ -29,3 +29,18 @@
 h1 {
     text-transform: capitalize;
 }
+
+.movie-container {
+    width: 440px !important;
+}
+
+@media screen and (max-width: 600px){
+    .movie-container {
+        width: 268px !important;
+    }
+
+    .poster {
+        object-fit: cover !important;
+        object-position: top !important;
+    }
+}

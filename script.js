@@ -5,33 +5,37 @@ const submitBtn = document.getElementById("submitBtn");
 
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    var dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
-    console.log("clicked");
     const inputData = document.getElementById("inputField").value;
-    const apiUrl = "https://www.omdbapi.com/?s=" + inputData + "&apikey=599ded55";
+    if (inputData === null || inputData.trim() === "") {
+        alert("Invalid Input");
+    } else {
+        var dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
+        console.log("clicked");
 
-    fetch(apiUrl)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`Error code: ${response.status}`);
-            }
+        const apiUrl = "https://www.omdbapi.com/?s=" + inputData + "&apikey=599ded55";
 
-            return response.json();
-        })
+        fetch(apiUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Error code: ${response.status}`);
+                }
 
-        .then((data) => {
-            console.log(data);
-            var dataOutput = document.getElementById("demo");
+                return response.json();
+            })
 
-            if (data.Response === "True") {
-                dataOutput.innerHTML = "";
-                for (i = 0; i <= data.Search.length - 1; i++) {
-                    dataOutput.innerHTML += 
-                    `
-                <div class="card mb-3" style="width: 440px;">
+            .then((data) => {
+                console.log(data);
+                var dataOutput = document.getElementById("demo");
+
+                if (data.Response === "True") {
+                    dataOutput.innerHTML = "";
+                    for (i = 0; i <= data.Search.length - 1; i++) {
+                        dataOutput.innerHTML +=
+                            `
+                <div class="card mb-3 movie-container">
                     <div class="row g-0">
                         <div class="col-md-4">
-                        <img style="height:200px;" src="${data.Search[i].Poster}" class="img-fluid rounded-start" alt="${inputData} Poster">
+                        <img style="height:200px; object-fit:cover; width:100%; object-position: top;" src="${data.Search[i].Poster}" class="img-fluid rounded-start poster" alt="${inputData} Poster">
                         </div>
                         <div class="col-md-8">
                         <div class="card-body d-flex flex-column">
@@ -44,33 +48,32 @@ submitBtn.addEventListener("click", function (event) {
                     </div>
                 </div>
                 `;
-                }
-            } else {
-                if (data.Response === "False") {
-                    dataOutput.innerHTML = data.Error;
+                    }
                 } else {
-                    console.log("Status 404 Not Found.");
+                    if (data.Response === "False") {
+                        dataOutput.innerHTML = data.Error;
+                    } else {
+                        console.log("Status 404 Not Found.");
+                    }
                 }
-            }
-        })
+            })
 
-        .catch((error) => {
-            console.error("Fetch Error: ", error);
-        });
+            .catch((error) => {
+                console.error("Fetch Error: ", error);
+            });
+    }
 });
 
 
 function link() {
     const links = document.querySelectorAll("a");
-    links.forEach( (link) => {
-        link.addEventListener("click", (event) => {
-            event.preventDefault();
-            url = link.getAttribute("data-bs-url");
-            console.log(url);
+    links.forEach((link) => {
+        event.preventDefault();
+        url = link.getAttribute("data-bs-url");
+        console.log(url);
+        localStorage.setItem("clickedLink", url);
+        window.location = "./more.html";
 
-            localStorage.setItem("clickedLink", url);
-
-            window.location = "./more.html";
-        })
     })
 }
+
