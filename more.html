@@ -145,6 +145,7 @@
                             </div>
                         </div>
                         `;
+                        localStorage.removeItem("clickedLink");
                     })
 
                     .catch((error) => {
@@ -152,6 +153,10 @@
                     });
             } else {
                 console.log("No item received from the Local Storage.");
+                area = document.getElementById("dynamicLoad").innerHTML = 
+                `
+                    <P>No item received from the Local Storage.</P>
+                `;
             }
         });
     </script>
