@@ -6,7 +6,8 @@ const submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
     const inputData = document.getElementById("inputField").value;
-    if (inputData === null || inputData.trim() === "") {
+    
+    if (inputData === null || inputData === "") {
         alert("Invalid Input");
     } else {
         var dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
