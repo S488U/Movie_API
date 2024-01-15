@@ -22,13 +22,13 @@
             margin-top: 50px;
         }
     </style>
-    <script src="./navbar.js"></script>
+    <script src="../script/navbar.js"></script>
 </head>
 
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container d-flex flex-row ">
-            <a class="navbar-brand" href="./index.html">
+            <a class="navbar-brand" href="../../index.html">
                 <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973" alt="Bootstrap"
                     width="30" height="24"> Movie Searcher
             </a>
@@ -43,7 +43,7 @@
                     <a class="nav-link" href="./login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link userShow" aria-disabled="true"></a>
                 </li>
             </ul>
             <button class="btn btn-outline-dark navbtntoggle " type="button" data-bs-toggle="offcanvas"
@@ -55,7 +55,7 @@
         <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="navbar-brand" href="./index.html">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="navbar-brand" href="../../index.html">
                         <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973"
                             alt="Bootstrap" width="30" height="24"> Movie Searcher
                     </a></h5>
@@ -73,30 +73,36 @@
                         <a class="nav-link" href="./login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link userShow" aria-disabled="true"></a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 60vh;">
         <form class="col-md-6 col-lg-4 p-4 rounded-3">
             <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input id="name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter name">
+            </div>
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input id="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input id="password" type="password" class="form-control" placeholder="Password">
             </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-primary ">Submit</button>
+            <div class="mb-3 d-flex flex-column">
+                <button id="submit" type="submit" class="btn btn-outline-dark d-block ">Submit</button>
             </div>
         </form>
     </div>
 
 
+    <script src="../script/login.js"></script>
+    <script src="../script/userCheck.js"></script>
 
     <script src="https://kit.fontawesome.com/4145934b9b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

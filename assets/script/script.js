@@ -42,7 +42,7 @@ submitBtn.addEventListener("click", function (event) {
                                         <h4 class="card-title ">${data.Search[i].Title}</h4>
                                         <p class="card-text">Type: ${data.Search[i].Type} </p>
                                         <p class="card-text"><small class="text-body-secondary">Released: ${data.Search[i].Year}</small></p>
-                                        <a href="./more.html" data-bs-url="${data.Search[i].imdbID}" class="btn btn-primary">See More</a>
+                                        <a href="./assets/pages/more.html" data-bs-url="${data.Search[i].imdbID}" class="btn btn-primary">See More</a>
                                     </div>
                                     </div>
                                 </div>

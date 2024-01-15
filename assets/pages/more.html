@@ -5,38 +5,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>See More</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="./navbar.js"></script>
+    <link rel="stylesheet" href="../style/style.css" />
+    <script src="../script/navbar.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous" />
-        <style>
-            body {
-                background-color: #f8f9fa; /* Set your preferred background color */
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        #dynamicLoad {
+            margin-top: 50px;
+        }
+
+        .movie-poster {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .fav-style {
+            position: absolute;
+            top: 17%;
+            right: 10%;
+            padding: 5px 6px;
+            border: 1px solid black;
+            border-radius: 9999px;
+            box-shadow: 0px 0px 34px black;
+            background-color: #fff;
+        }
+
+        @media screen and (max-width: 600px) {
+            .second {
+                padding: 43px;
             }
-    
-            #dynamicLoad {
-                margin-top: 50px;
+
+            .fav-style {
+                position: fixed !important;
             }
-    
-            .movie-poster {
-                max-width: 100%;
-                height: auto;
-                border-radius: 5px;
-            }
-    
-            @media screen and (max-width: 600px){
-                .second {
-                    padding: 43px;
-                }
-            }
-    
-        </style>
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container d-flex flex-row">
-            <a class="navbar-brand" href="./index.html">
+            <a class="navbar-brand" href="../../index.html">
                 <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973" alt="Bootstrap"
                     width="30" height="24" />
                 Movie Searcher
@@ -52,12 +66,11 @@
                     <a class="nav-link" href="./login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link userShow" aria-disabled="true"></a>
                 </li>
             </ul>
             <button class="btn btn-outline-dark navbtntoggle" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasExample" style="display: none"
-                aria-controls="offcanvasExample">
+                data-bs-target="#offcanvasExample" style="display: none" aria-controls="offcanvasExample">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -66,7 +79,7 @@
             aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-                    <a class="navbar-brand" href="./index.html">
+                    <a class="navbar-brand" href="../../index.html">
                         <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973"
                             alt="Bootstrap" width="30" height="24" />
                         Movie Searcher
@@ -86,7 +99,7 @@
                         <a class="nav-link" href="./login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link userShow" aria-disabled="true"></a>
                     </li>
                 </ul>
             </div>
@@ -119,13 +132,13 @@
 
                     .then((data) => {
                         console.log(data);
-                        area = document.getElementById("dynamicLoad").innerHTML = 
-                        `
+                        area = document.getElementById("dynamicLoad").innerHTML =
+                            `
                         <div class="row">
                             <div class="col-md-6 d-flex flex-column justidy-content-center align-items-center first">
                                 <img src="${data.Poster}" alt="Movie Poster" class="movie-poster img-fluid">
                             </div>
-                            <div class="col-md-6 second">
+                            <div id="data-div" class="col-md-6 second">
                                 <h2 class="mb-4">${data.Title}</h2>
                                 <p><strong>Language:</strong> ${data.Language}</p>
                                 <p><strong>Rated:</strong> ${data.Rated}</p>
@@ -145,7 +158,28 @@
                             </div>
                         </div>
                         `;
-                        localStorage.removeItem("clickedLink");
+                        // localStorage.removeItem("clickedLink");
+
+
+                        var user = JSON.parse(localStorage.getItem("userInfo"));
+
+                        if (user) {
+                            var append = document.getElementById("data-div");
+                            var favBtn = document.createElement("p");
+                            favBtn.setAttribute("class", "fav-style");
+                            favBtn.setAttribute("id", "favId");
+                            favBtn.textContent = "❤";
+                            append.appendChild(favBtn);
+                        }
+
+                        const favId = document.getElementById("favId");
+                        favId.addEventListener("click", () => {
+                            var favArray = [];
+                            favArray.push(received);
+                            localStorage.setItem("favourite", favArray);
+                            console.log(localStorage.getItem("favourite"))
+                        })
+
                     })
 
                     .catch((error) => {
@@ -153,13 +187,14 @@
                     });
             } else {
                 console.log("No item received from the Local Storage.");
-                area = document.getElementById("dynamicLoad").innerHTML = 
-                `
+                area = document.getElementById("dynamicLoad").innerHTML =
+                    `
                     <P>No item received from the Local Storage.</P>
                 `;
             }
         });
     </script>
+    <script src="../script/userCheck.js"></script>
 
     <script src="https://kit.fontawesome.com/4145934b9b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
