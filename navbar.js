@@ -13,6 +13,7 @@ function handleSize() {
     }
 }
 
-handleSize();
-
-window.addEventListener("resize", handleSize);
+document.addEventListener("DOMContentLoaded", function () {
+    handleSize();
+    window.addEventListener("resize", handleSize);
+});
