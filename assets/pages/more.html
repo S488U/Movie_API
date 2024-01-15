@@ -174,11 +174,11 @@
 
                         const favId = document.getElementById("favId");
                         favId.addEventListener("click", () => {
-                            var favArray = [];
-                            favArray.push(received);
-                            localStorage.setItem("favourite", favArray);
-                            console.log(localStorage.getItem("favourite"))
-                        })
+                            var existingFavs = JSON.parse(localStorage.getItem("favourite")) || [];
+                            existingFavs.push(received);
+                            localStorage.setItem("favourite", JSON.stringify(existingFavs));
+                            console.log(localStorage.getItem("favourite"));
+                        });
 
                     })
 
