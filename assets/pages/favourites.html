@@ -43,7 +43,7 @@
                     <a class="nav-link" href="./login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link userShow" aria-disabled="true"></a>
+                    <a class="nav-link userShow" href="./user.html" aria-disabled="true"></a>
                 </li>
             </ul>
             <button class="btn btn-outline-dark navbtntoggle " type="button" data-bs-toggle="offcanvas"
@@ -73,15 +73,28 @@
                         <a class="nav-link" href="./login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link userShow" aria-disabled="true"></a>
+                        <a class="nav-link userShow" href="./user.html" aria-disabled="true"></a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container d-flex flex-column justify-content-end align-items-center">
-
+    <div class="container d-flex flex-column justify-content-end align-items-center p-5">
+        <h1 class="p-3" style="text-transform: capitalize;"><u>favourites</u></h1>
+        <table class="table table-striped table-hover border border-dark">
+            <thead>
+            <tr class="table-dark ">
+                <th scope="col">Name</th>
+                <th scope="col">Release</th>
+                <th scope="col">type</th>
+                <th scope="col">Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            </tbody>
+        </table>
     </div>
 
     <script src="../script/userCheck.js"></script>

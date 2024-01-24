@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Favourites</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+        .about-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .favorite-movies-section {
+            margin-top: 50px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .reset {
+                width: 100% !important;
+            }
+
+            input {
+                width:100% !important;
+            }
+
+            label {
+                padding: 5px 0;
+            }
+        }
+
+    </style>
+    <script src="../script/navbar.js"></script>
+</head>
+
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container d-flex flex-row ">
+            <a class="navbar-brand" href="../../index.html">
+                <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973" alt="Bootstrap"
+                    width="30" height="24"> Movie Searcher
+            </a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./favourites.html">Favorite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link user-login" href="./login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link userShow" href="./user.html" aria-disabled="true"></a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-dark navbtntoggle " type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" style="display: none;" aria-controls="offcanvasExample">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="navbar-brand" href=".../../index.html">
+                        <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973"
+                            alt="Bootstrap" width="30" height="24"> Movie Searcher
+                    </a></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./favourites.html">Favorite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link user-login" href="./login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link userShow" href="./user.html" aria-disabled="true"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex flex-column justify-content-end align-items-center p-md-5 main p-1">
+        <h1 class="p-3" style="text-transform: capitalize;"><u>User Dashboard</u></h1>
+      
+        <div class="container d-flex flex-column flex-md-row justify-content-around align-items-start">
+            <div style="width: 30%;" class="container d-flex flex-column justify-content-center reset">
+                <h4 class="p-3 text-md-center text-center " style="text-transform: capitalize;"><u>Account Details</u></h4>
+                <div class="container">
+                    <p class="text-center text-md-start"><strong>Name : </strong><span id="currentName"> </span></p>
+                    <p class="text-center text-md-start"><strong>Email : </strong><span id="currentEmail"> </span></p>
+                    <p class="text-center text-md-start"><strong>Password : </strong><span id="currentPass"> </span></p>
+                </div>
+            </div>
+            <div style="width: 50%;" class="container d-flex flex-column reset">
+                <form action="" class="m-2 p-3 border rounded">
+                    <label for="">Enter your new username:</label>
+                    <div class="d-flex gap-2 flex-column flex-md-row">
+                        <input style="width: 60%" class="form-control border border-dark" type="text" name="" id="">
+                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" value="submit">
+                    </div>
+                </form>
+                <form action="" class="m-2 p-3 border rounded">
+                    <label for="">Enter your new Mail ID:</label>
+                    <div class="d-flex gap-2 flex-column flex-md-row">
+                        <input style="width: 60%" class="form-control border border-dark" type="email" name="" id="">
+                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" value="submit">
+                    </div>
+                </form>
+                <form action="" class="m-2 p-3 border rounded">
+                    <label for="">Enter your new password</label>
+                    <br>
+                    <small class="text-body-tertiary">Password Must be strong</small>
+                    <div class="d-flex gap-2 flex-column flex-md-row">
+                        <input style="width: 60%" class="form-control border border-dark" type="password" name="" id="">
+                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" value="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container d-flex flex-column justify-content-center align-items-center px-5 ">
+            <div class="container border border-danger rounded m-3 p-4 px-md-5 bg-danger-subtle">
+                <h4 class="text-danger"><strong>Delete Your Account</strong></h4>
+                <form action="">
+                    <small class="text-danger">Enter your username <span></span> and submit to delete your account</small>
+                    <div class="container d-flex flex-column gap-2 flex-md-row p-0">
+                        <input style="width:60%;" class="form-control border border-danger-subtle" type="text" name="" id="">
+                        <input style="width:30%;" class="form-control btn btn-danger mt-1 mt-md-0" type="submit" value="submit">
+                    </div>
+                    <p class="text-danger pt-2 pt-md-3"><strong class="fs-5">Note:-</strong><br>Delete your account will delete all the data including favourites and search history</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="../script/userCheck.js"></script>
+
+
+    <script src="https://kit.fontawesome.com/4145934b9b.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

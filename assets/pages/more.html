@@ -65,10 +65,10 @@
                     <a class="nav-link" href="./favourites.html">favourites</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./login.html">Login</a>
+                    <a class="nav-link user-login href="./login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link userShow" aria-disabled="true"></a>
+                    <a class="nav-link userShow" href="./user.html" aria-disabled="true"></a>
                 </li>
             </ul>
             <button class="btn btn-outline-dark navbtntoggle" type="button" data-bs-toggle="offcanvas"
@@ -98,10 +98,10 @@
                         <a class="nav-link" href="./favourites.html">Favorite</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./login.html">Login</a>
+                        <a class="nav-link user-login" href="./login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link userShow" aria-disabled="true"></a>
+                        <a class="nav-link userShow" href="./user.html" aria-disabled="true"></a>
                     </li>
                 </ul>
             </div>
@@ -171,31 +171,18 @@
                             favId.style.display = "block";
                         }
 
-                        // Add the event listener here
                         favId.addEventListener("click", (event) => {
                             event.preventDefault();
+                            console.log("clicked");
+
                             var getFav = localStorage.getItem("favourite");
-                            var fav = [];
-                            console.log(fav);
-
-                            if (getFav) {
-                                fav = JSON.parse(getFav);
-                                console.log("Favorites exist");
-                            } else {
-                                console.log("No favorites");
-                            }
-
+                            var id = received;
+                            var fav = getFav ? getFav.split(',') : [];
                             fav.push(received);
                             console.log(fav);
-                            localStorage.setItem("favourite", fav);
 
-                            var favreturn = localStorage.getItem("favourite");
-                            console.log(favreturn);
-
-                            console.log("clicked");
+                            localStorage.setItem("favourite", fav.join(','));
                         });
-
-
 
                     })
 
