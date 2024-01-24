@@ -33,6 +33,8 @@
             border-radius: 9999px;
             box-shadow: 0px 0px 34px black;
             background-color: #fff;
+            cursor: pointer;
+            user-select: none ;
         }
 
         @media screen and (max-width: 600px) {
@@ -155,6 +157,7 @@
                                 <p><strong>Awards:</strong> ${data.Awards}</p>
                                 <p><strong>Country:</strong> ${data.Country}</p>
                                 <p><strong>Box Office:</strong> ${data.BoxOffice}</p>
+                                <p class='fav-style' id='favId' style='display:none'>❤</p>
                             </div>
                         </div>
                         `;
@@ -162,23 +165,37 @@
 
 
                         var user = JSON.parse(localStorage.getItem("userInfo"));
+                        let favId = document.getElementById("favId");
 
                         if (user) {
-                            var append = document.getElementById("data-div");
-                            var favBtn = document.createElement("p");
-                            favBtn.setAttribute("class", "fav-style");
-                            favBtn.setAttribute("id", "favId");
-                            favBtn.textContent = "❤";
-                            append.appendChild(favBtn);
+                            favId.style.display = "block";
                         }
 
-                        const favId = document.getElementById("favId");
-                        favId.addEventListener("click", () => {
-                            var existingFavs = JSON.parse(localStorage.getItem("favourite")) || [];
-                            existingFavs.push(received);
-                            localStorage.setItem("favourite", JSON.stringify(existingFavs));
-                            console.log(localStorage.getItem("favourite"));
+                        // Add the event listener here
+                        favId.addEventListener("click", (event) => {
+                            event.preventDefault();
+                            var getFav = localStorage.getItem("favourite");
+                            var fav = [];
+                            console.log(fav);
+
+                            if (getFav) {
+                                fav = JSON.parse(getFav);
+                                console.log("Favorites exist");
+                            } else {
+                                console.log("No favorites");
+                            }
+
+                            fav.push(received);
+                            console.log(fav);
+                            localStorage.setItem("favourite", fav);
+
+                            var favreturn = localStorage.getItem("favourite");
+                            console.log(favreturn);
+
+                            console.log("clicked");
                         });
+
+
 
                     })
 
