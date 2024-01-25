@@ -28,19 +28,18 @@
             }
 
             input {
-                width:100% !important;
+                width: 100% !important;
             }
 
             label {
                 padding: 5px 0;
             }
         }
-
     </style>
     <script src="../script/navbar.js"></script>
 </head>
 
-<body>
+<body class="bg-body">
     <nav class="navbar bg-body-tertiary">
         <div class="container d-flex flex-row ">
             <a class="navbar-brand" href="../../index.html">
@@ -96,30 +95,31 @@
     </nav>
 
     <div class="container d-flex flex-column justify-content-end align-items-center p-md-5 main p-1">
-        <h1 class="p-3" style="text-transform: capitalize;"><u>User Dashboard</u></h1>
-      
-        <div class="container d-flex flex-column flex-md-row justify-content-around align-items-start">
+        <h1 class="p-3 text-capitalize ">user dashboard</h1>
+
+        <div class="container d-flex flex-column flex-md-row justify-content-around py-md-5 py-5 bg-light rounded align-items-start border">
             <div style="width: 30%;" class="container d-flex flex-column justify-content-center reset">
-                <h4 class="p-3 text-md-center text-center " style="text-transform: capitalize;"><u>Account Details</u></h4>
-                <div class="container">
-                    <p class="text-center text-md-start"><strong>Name : </strong><span id="currentName"> </span></p>
-                    <p class="text-center text-md-start"><strong>Email : </strong><span id="currentEmail"> </span></p>
-                    <p class="text-center text-md-start"><strong>Password : </strong><span id="currentPass"> </span></p>
+                <h4 class="p-3 text-md-center text-center " style="text-transform: capitalize;"><u>Account Details</u>
+                </h4>
+                <div class="container ps-3">
+                    <p class="text-start text-md-start"><strong>Name : </strong><span id="currentName"> </span></p>
+                    <p class="text-start text-md-start"><strong>Email : </strong><span id="currentEmail"> </span></p>
+                    <p class="text-start text-md-start"><strong>Password : </strong><span id="currentPass"> </span></p>
                 </div>
             </div>
             <div style="width: 50%;" class="container d-flex flex-column reset">
                 <form action="" class="m-2 p-3 border rounded">
                     <label for="">Enter your new username:</label>
                     <div class="d-flex gap-2 flex-column flex-md-row">
-                        <input style="width: 60%" class="form-control border border-dark" type="text" name="" id="">
-                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" value="submit">
+                        <input style="width: 60%" class="form-control border border-dark" id="nUser" type="text" >
+                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" id="userSubmit" value="submit">
                     </div>
                 </form>
                 <form action="" class="m-2 p-3 border rounded">
                     <label for="">Enter your new Mail ID:</label>
                     <div class="d-flex gap-2 flex-column flex-md-row">
-                        <input style="width: 60%" class="form-control border border-dark" type="email" name="" id="">
-                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" value="submit">
+                        <input style="width: 60%" class="form-control border border-dark" id="nEmail" type="email" >
+                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" id="emailSubmit" value="submit">
                     </div>
                 </form>
                 <form action="" class="m-2 p-3 border rounded">
@@ -127,29 +127,34 @@
                     <br>
                     <small class="text-body-tertiary">Password Must be strong</small>
                     <div class="d-flex gap-2 flex-column flex-md-row">
-                        <input style="width: 60%" class="form-control border border-dark" type="password" name="" id="">
-                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" value="submit">
+                        <input style="width: 60%" class="form-control border border-dark" id="nPassword" type="password" autocomplete="off">
+                        <input style="width: 30% " class="form-control btn btn-dark" type="submit" id="passSubmit" value="submit">
                     </div>
                 </form>
             </div>
         </div>
-        <div class="container d-flex flex-column justify-content-center align-items-center px-5 ">
+        <div class="container d-flex flex-column justify-content-center align-items-center px-2 ">
             <div class="container border border-danger rounded m-3 p-4 px-md-5 bg-danger-subtle">
-                <h4 class="text-danger"><strong>Delete Your Account</strong></h4>
+                <h4 class="text-danger text-capitalize"> <strong>Delete Your Account</strong></h4>
                 <form action="">
-                    <small class="text-danger">Enter your username <span></span> and submit to delete your account</small>
+                    <small class="text-danger">Enter your username "<span id="dlUser"></span>" and submit to delete your
+                        account</small>
                     <div class="container d-flex flex-column gap-2 flex-md-row p-0">
-                        <input style="width:60%;" class="form-control border border-danger-subtle" type="text" name="" id="">
-                        <input style="width:30%;" class="form-control btn btn-danger mt-1 mt-md-0" type="submit" value="submit">
+                        <input style="width:60%;" class="form-control border border-danger-subtle" id="dlCnfrmUser" type="text" name=""
+                            >
+                        <input style="width:30%;" class="form-control btn btn-danger mt-1 mt-md-0" id="dltSubmit" type="submit"
+                            value="submit">
                     </div>
-                    <p class="text-danger pt-2 pt-md-3"><strong class="fs-5">Note:-</strong><br>Delete your account will delete all the data including favourites and search history</p>
+                    <p class="text-danger pt-2 pt-md-3"><strong class="fs-5">Note:-</strong><br>Delete your account will
+                        delete all the data including favourites and search history</p>
                 </form>
             </div>
         </div>
     </div>
-    
+
 
     <script src="../script/userCheck.js"></script>
+    <script src="../script/user.js"></script>
 
 
     <script src="https://kit.fontawesome.com/4145934b9b.js" crossorigin="anonymous"></script>

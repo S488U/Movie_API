@@ -7,7 +7,7 @@ submit.addEventListener("click", (event) => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    if( !email || !password ) {
+    if(!name || !email || !password ) {
         alert("Please enter the email and password");
     } else {
         var user = {
@@ -16,7 +16,7 @@ submit.addEventListener("click", (event) => {
             password: password
         }
         localStorage.setItem("userInfo", JSON.stringify(user));
-        location.reload();
+        window.location.href = "./user.html";
     }
 });
 
