@@ -48,6 +48,9 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="../../index.html">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="./about.html">About</a>
                 </li>
                 <li class="nav-item">
@@ -77,6 +80,9 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../../index.html">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./about.html">About</a>
                     </li>
@@ -133,6 +139,16 @@
                 </form>
             </div>
         </div>
+
+        <div style="cursor: pointer;" class="container d-flex flex-column justify-content-center align-items-center px-2 border rounded m-4">
+            <div class="container m-2 m-md-2 p-md-2 p-2" id="showBoxHis">
+                <p class="fs-3 my-0 my-md-0">View your search histories here</p>
+            </div>
+            <div id="showHistories" class="container border bg-body-tertiary  rounded m-2 p-md-4 p-4" style="display: none;">
+                
+            </div>
+        </div>
+
         <div class="container d-flex flex-column justify-content-center align-items-center px-2 ">
             <div class="container border border-danger rounded m-3 p-4 px-md-5 bg-danger-subtle">
                 <h4 class="text-danger text-capitalize"> <strong>Delete Your Account</strong></h4>
@@ -145,7 +161,7 @@
                         <input style="width:30%;" class="form-control btn btn-danger mt-1 mt-md-0" id="dltSubmit" type="submit"
                             value="submit">
                     </div>
-                    <p class="text-danger pt-2 pt-md-3"><strong class="fs-5">Note:-</strong><br>Delete your account will
+                    <p class="text-danger pt-2 pt-md-3"><strong class="fs-5">Note:-</strong><br>Deleting your account will
                         delete all the data including favourites and search history</p>
                 </form>
             </div>

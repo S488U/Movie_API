@@ -7,6 +7,8 @@ submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
     const inputData = document.getElementById("inputField").value;
     
+    saveHistory(inputData);
+
     if (inputData === null || inputData === "") {
         alert("Invalid Input");
     } else {
@@ -73,3 +75,21 @@ submitBtn.addEventListener("click", function (event) {
             });
     }
 });
+
+
+function saveHistory(item) {
+    
+    var user = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (user) {
+        var gethis = localStorage.getItem("histories");
+        var his = gethis ? gethis.split(',') : [];
+        his.push(item);
+        console.log(his);
+
+        localStorage.setItem("histories", his.join(','));
+    } else {
+        console.log("Not Logged in");
+    }
+   
+}

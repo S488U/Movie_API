@@ -22,6 +22,7 @@ userSubmit.addEventListener("click", (e) => {
     } else {
         user.name = nUser;
         cName.innerText = nUser;
+        dlUser.innerHTML = nUser;
         pushStorage(user);
         alert("User Name changed Successfully");
     }
@@ -66,6 +67,7 @@ function pushStorage(updatedUser) {
     localStorage.setItem("userInfo", JSON.stringify(updatedUser));
 }
 
+
 const dltSubmit = document.getElementById("dltSubmit");
 
 dltSubmit.addEventListener("click", (e) => {
@@ -85,3 +87,35 @@ dltSubmit.addEventListener("click", (e) => {
         }
     }
 })
+
+const showBoxHis = document.getElementById("showBoxHis");
+
+showBoxHis.addEventListener("click", () => {
+    var gbHis = localStorage.getItem("histories");
+    histories = gbHis.split(',');
+    console.log(histories);
+
+    let tableContent = "";
+    histories.forEach(savedHistory => {
+        tableContent += showEachHistories(savedHistory);
+    });
+
+    var showHistories = document.getElementById("showHistories");
+    showHistories.style.display = "block";
+    showHistories.innerHTML = `
+        <table class="table rounded table-striped table-hover border border-dark">
+            <thead>
+                <tr class="table-dark ">
+                    <th scope="col">Histories</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${tableContent}
+            </tbody>
+        </table>
+    `;
+});
+
+function showEachHistories(e) {
+    return `<tr><td scope="row">${e}</td></tr>`;
+}
