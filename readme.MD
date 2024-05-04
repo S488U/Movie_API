@@ -1,4 +1,4 @@
-# Movie Ticket Booking
+# Movie Searcher 
 
 This is my college project to book the movie shows.
 
