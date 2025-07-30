@@ -12,6 +12,7 @@
     <style>
         body {
             background-color: #f8f9fa;
+            --fav-color: red;
         }
 
         #dynamicLoad {
@@ -25,16 +26,24 @@
         }
 
         .fav-style {
+            border-radius: 999px;
+            padding: 0.5%;
+            background-color: rgba(255, 255, 255, 0.726) !important;
             position: absolute;
-            top: 17%;
+            top: 23%;
             right: 10%;
-            padding: 5px 6px;
-            border: 1px solid black;
-            border-radius: 9999px;
-            box-shadow: 0px 0px 34px black;
-            background-color: #fff;
             cursor: pointer;
             user-select: none ;
+            display: inline-block;
+        }
+
+        .fav-style svg {
+            transform: translateY(0);
+            transition: transform 200ms ease-in-out;
+            &:hover {
+                filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 4px 12px);
+                transform: translateY(-4px);
+            }
         }
 
         @media screen and (max-width: 600px) {
@@ -43,6 +52,7 @@
             }
 
             .fav-style {
+                padding: 2% !important;
                 position: fixed !important;
             }
         }
@@ -53,7 +63,7 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container d-flex flex-row">
             <a class="navbar-brand" href="../../index.html">
-                <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973" alt="Bootstrap"
+                <img src="https://blog.dunite.tech/assets/favicon/android-chrome-512x512.png" alt="Bootstrap"
                     width="30" height="24" />
                 Movie Searcher
             </a>
@@ -68,7 +78,7 @@
                     <a class="nav-link" href="./favourites.html">favourites</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link user-login href="./login.html">Login</a>
+                    <a class="nav-link user-login" href="./login.html">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link userShow" href="./user.html" aria-disabled="true"></a>
@@ -85,7 +95,7 @@
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">
                     <a class="navbar-brand" href="../../index.html">
-                        <img src="https://duploader.tech/assets/favicon/android-chrome-512x512.png?v=1704904973"
+                        <img src="https://blog.dunite.tech/assets/favicon/android-chrome-512x512.png"
                             alt="Bootstrap" width="30" height="24" />
                         Movie Searcher
                     </a>
@@ -163,7 +173,11 @@
                                 <p><strong>Awards:</strong> ${data.Awards}</p>
                                 <p><strong>Country:</strong> ${data.Country}</p>
                                 <p><strong>Box Office:</strong> ${data.BoxOffice}</p>
-                                <p class='fav-style' id='favId' style='display:none'>❤</p>
+                                <span class='fav-style' id='favId' style='display:none'>                                                        
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="var(--fav-color)" class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+                                    </svg>  
+                                </span>
                             </div>
                         </div>
                         `;
