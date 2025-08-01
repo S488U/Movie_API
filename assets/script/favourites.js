@@ -1,54 +1,58 @@
 
-var user = JSON.parse(localStorage.getItem("userInfo"));
+let user = JSON.parse(localStorage.getItem("userInfo"));
 
-if(user) {
-    var fav = localStorage.getItem("favourite");
-    favModified = fav.split(',');
-
-    var element = favModified;
-    var conFav = new Set(element);
-    var newFav = Array.from(conFav);
+if (user) {
+    let fav = localStorage.getItem("favourite");
+    let favModified = fav.split(',');
+    let conFav = new Set(favModified);
+    let newFav = Array.from(conFav);
 
 
-    newFav.forEach(eachElement => {
-        favShow(eachElement);
+    newFav.forEach(async eachElement => {
+        await favShow(eachElement);
     });
 }
 
-function favShow(e) {
-    if(e === null || e === "") {
+async function favShow(e) {
+    if (e === null || e === "") {
         alert("Favourite is corrupted, Clear cache and Data");
     } else {
         const apiUrl = "https://www.omdbapi.com/?i=" + e + "&apikey=599ded55";
         console.log(apiUrl)
 
-        fetch(apiUrl) 
-        .then((response => {
-            if(!response.ok) {
-                throw new Error(`Error code: ${response.status}`);
-            }
+        await fetch(apiUrl)
+            .then((response => {
+                if (!response.ok) {
+                    throw new Error(`Error code: ${response.status}`);
+                }
 
-            return response.json();
-        }))
+                return response.json();
+            }))
+            .then((data) => {
+                if (data.Response === "True") {
 
-        .then((data) => {
-            if (data.Response === "True") {
-
-                var createElement = document.createElement('tr');
-                createElement.innerHTML = `
-                    <td scope="row">${data.Title}</td>
+                    let createElement = document.createElement('tr');
+                    createElement.innerHTML = `
+                    <td scope="row"><a href="./more.html" data-bs-url="${e}" class="text-black">${data.Title}</a></td>
                     <td>${data.Year}</td>
                     <td>${data.Type}</td>
                     <td>${data.imdbRating}</td>
                 `;
-        
-                document.querySelector("tbody").appendChild(createElement);
-            }
-        })
-        
+                    document.querySelector("tbody").appendChild(createElement);
 
-        .catch((error) => {
-            console.error("Fetch Error: ", error);
-        });
-    } 
+                    const links = document.querySelectorAll("a[data-bs-url]");
+                    links.forEach((link) => {
+                        link.addEventListener("click", (event) => {
+                            event.preventDefault();
+                            const dataCode = link.getAttribute("data-bs-url");
+                            localStorage.setItem("clickedLink", dataCode);
+                            window.location.href = link.getAttribute("href");
+                        });
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error("Fetch Error: ", error);
+            });
+    }
 }
