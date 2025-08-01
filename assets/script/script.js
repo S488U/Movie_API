@@ -2,11 +2,21 @@
 // https://www.omdbapi.com/?i=tt3896198&apikey=599ded55
 
 const submitBtn = document.getElementById("submitBtn");
+const xssRegex = /(<\s*script.*?>.*?<\s*\/\s*script\s*>|javascript:|on\w+\s*=|<\s*iframe|<\s*img\s+[^>]*on\w+\s*=|<\s*svg[^>]*>|<\s*link[^>]*>|<\s*body[^>]*>|<\s*embed[^>]*>|<\s*object[^>]*>)/i;
 
 submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    const inputData = document.getElementById("inputField").value;
+    const inputData = document.getElementById("inputField").value.trim();
+
+    if (xssRegex.test(inputData)) {
+        console.log("XSS Detected!");
+        document.getElementById("inputField").value = "";
+        document.getElementById("demo").innerText = "XSS Detected!";
+        return;
+    }
     
+    document.getElementById("inputField").value = inputData;
+
     saveHistory(inputData);
 
     if (inputData === null || inputData === "") {
@@ -78,7 +88,7 @@ submitBtn.addEventListener("click", function (event) {
 
 
 function saveHistory(item) {
-    
+
     var user = JSON.parse(localStorage.getItem("userInfo"));
 
     if (user) {
@@ -91,5 +101,5 @@ function saveHistory(item) {
     } else {
         console.log("Not Logged in");
     }
-   
+
 }
