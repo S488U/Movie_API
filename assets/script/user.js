@@ -1,3 +1,5 @@
+import { escapeHTML } from "./lib.js";
+
 let user = JSON.parse(localStorage.getItem("userInfo"));
 
 let cName = document.getElementById("currentName");
@@ -7,10 +9,10 @@ let dlUser =  document.getElementById("dlUser");
 
 console.log(user);
 
-cName.innerHTML = user.name;
-cEmail.innerHTML = user.email;
-cPass.innerHTML = user.password;
-dlUser.innerHTML = user.name;
+cName.innerHTML = escapeHTML(user.name);
+cEmail.innerHTML = escapeHTML(user.email);
+cPass.innerHTML = escapeHTML(user.password);
+dlUser.innerHTML = escapeHTML(user.name);
 
 const userSubmit = document.getElementById("userSubmit");
 userSubmit.addEventListener("click", (e) => {
@@ -22,7 +24,7 @@ userSubmit.addEventListener("click", (e) => {
     } else {
         user.name = nUser;
         cName.innerText = nUser;
-        dlUser.innerHTML = nUser;
+        dlUser.innerHTML = escapeHTML(nUser);
         pushStorage(user);
         alert("User Name changed Successfully");
     }
@@ -110,7 +112,7 @@ showBoxHis.addEventListener("click", () => {
                 </tr>
             </thead>
             <tbody>
-                ${tableContent}
+                ${escapeHTML(tableContent)}
             </tbody>
         </table>
     `;

@@ -1,5 +1,6 @@
 // API
 // https://www.omdbapi.com/?i=tt3896198&apikey=599ded55
+import { escapeHTML } from "./lib.js";
 
 const submitBtn = document.getElementById("submitBtn");
 const xssRegex = /(<\s*script.*?>.*?<\s*\/\s*script\s*>|javascript:|on\w+\s*=|<\s*iframe|<\s*img\s+[^>]*on\w+\s*=|<\s*svg[^>]*>|<\s*link[^>]*>|<\s*body[^>]*>|<\s*embed[^>]*>|<\s*object[^>]*>)/i;
@@ -22,7 +23,7 @@ submitBtn.addEventListener("click", function (event) {
     if (inputData === null || inputData === "") {
         alert("Invalid Input");
     } else {
-        var dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
+        // var dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
         console.log("clicked");
 
         const apiUrl = "https://www.omdbapi.com/?s=" + inputData + "&apikey=599ded55";
@@ -41,19 +42,19 @@ submitBtn.addEventListener("click", function (event) {
 
                 if (data.Response === "True") {
                     dataOutput.innerHTML = "";
-                    for (i = 0; i <= data.Search.length - 1; i++) {
+                    for (let i = 0; i <= data.Search.length - 1; i++) {
                         dataOutput.innerHTML +=
                             `
                             <div class="card mb-3 movie-container">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                    <img style="height:200px; object-fit:cover; width:100%; object-position: top;" src="${data.Search[i].Poster}" class="img-fluid rounded-start poster" alt="${inputData} Poster">
+                                    <img style="height:200px; object-fit:cover; width:100%; object-position: top;" src="${data.Search[i].Poster}" class="img-fluid rounded-start poster" alt="${escapeHTML(inputData)} Poster">
                                     </div>
                                     <div class="col-md-8">
                                     <div class="card-body d-flex flex-column">
-                                        <h4 class="card-title ">${data.Search[i].Title}</h4>
-                                        <p class="card-text">Type: ${data.Search[i].Type} </p>
-                                        <p class="card-text"><small class="text-body-secondary">Released: ${data.Search[i].Year}</small></p>
+                                        <h4 class="card-title ">${escapeHTML(data.Search[i].Title)}</h4>
+                                        <p class="card-text">Type: ${escapeHTML(data.Search[i].Type)} </p>
+                                        <p class="card-text"><small class="text-body-secondary">Released: ${escapeHTML(data.Search[i].Year)}</small></p>
                                         <a href="./assets/pages/more.html" data-bs-url="${data.Search[i].imdbID}" class="btn btn-primary">See More</a>
                                     </div>
                                     </div>
@@ -74,7 +75,7 @@ submitBtn.addEventListener("click", function (event) {
                     });
                 } else {
                     if (data.Response === "False") {
-                        dataOutput.innerHTML = data.Error;
+                        dataOutput.innerHTML = escapeHTML(data.Error);
                     } else {
                         console.log("Status 404 Not Found.");
                     }

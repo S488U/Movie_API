@@ -1,3 +1,4 @@
+import { escapeHTML } from "./lib.js";
 
 let user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -33,10 +34,10 @@ async function favShow(e) {
 
                     let createElement = document.createElement('tr');
                     createElement.innerHTML = `
-                    <td scope="row"><a href="./more.html" data-bs-url="${e}" class="text-black">${data.Title}</a></td>
-                    <td>${data.Year}</td>
-                    <td>${data.Type}</td>
-                    <td>${data.imdbRating}</td>
+                    <td scope="row"><a href="./more.html" data-bs-url="${e}" class="text-black">${escapeHTML(data.Title)}</a></td>
+                    <td>${escapeHTML(data.Year)}</td>
+                    <td>${escapeHTML(data.Type)}</td>
+                    <td>${escapeHTML(data.imdbRating)}</td>
                 `;
                     document.querySelector("tbody").appendChild(createElement);
 

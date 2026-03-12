@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (userDisplay.length > 0) {
             userDisplay.forEach(userElement => {
-                userElement.innerHTML = user.name || "No Name"; 
+                userElement.innerText = user.name || "No Name"; 
             });
         } else {
             console.log("No elements with the 'userShow' class found.");
