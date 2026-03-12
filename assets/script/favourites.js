@@ -1,10 +1,14 @@
-import { escapeHTML } from "./lib.js";
+import { escapeHTML, showNotification } from "./lib.js";
 
 const user = JSON.parse(localStorage.getItem("userInfo"));
 
 const favShow = async (e) => {
     if (e === null || e === "") {
-        alert("Favourite is corrupted, Clear cache and Data");
+		showNotification("Favourite is corrupted, Clear cache and Data", {
+			title: "Error",
+			variant: "danger", 
+			delay: 2500
+		});
     } else {
         const apiUrl = "https://www.omdbapi.com/?i=" + e + "&apikey=599ded55";
         console.log(apiUrl)

@@ -1,4 +1,4 @@
-import { escapeHTML } from "./lib.js";
+import { escapeHTML, showNotification } from "./lib.js";
 
 let user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -20,13 +20,21 @@ userSubmit.addEventListener("click", (e) => {
     const nUser = document.getElementById("nUser").value;
 
     if (!nUser) {
-        alert("Enter New Username!!");
+		showNotification("Enter New Username!!", {
+			title: "Warning",
+			variant: "warning",
+			delay: 2500
+		});
     } else {
         user.name = nUser;
         cName.innerText = nUser;
         dlUser.innerHTML = escapeHTML(nUser);
         pushStorage(user);
-        alert("User Name changed Successfully");
+		showNotification("User Name Changed Succesfully", {
+			title: "Saved",
+			variant: "success", 
+			delay: 2500
+		});
     }
 });
 
@@ -39,14 +47,26 @@ emailSubmit.addEventListener("click", (e) => {
     const nEmail = nEmailInput.value;
 
     if (!nEmail) {
-        alert("Enter New E-mail!!");
+		showNotification("Enter New E-mail!!", {
+			title: "Warning",
+			variant: "warning",
+			delay: 2500
+		});
     } else if (!emailRegex.test(nEmail)) {
-        alert("Enter a valid E-mail address!!");
+		showNotification("Enter a valid E-mail address!!", {
+			title: "Warning",
+			variant: "warning",
+			delay: 2500
+		});
     } else {
         user.email = nEmail;
         cEmail.innerText = nEmail;
         pushStorage(user);
-        alert("E-mail changed Successfully");
+		showNotification("E-mail changed succesfully", {
+			title: "Saved",
+			variant: "success", 
+			delay: 2500
+		});
     }
 });
 
@@ -56,12 +76,20 @@ passSubmit.addEventListener("click", (e) => {
     const nPass = document.getElementById("nPassword").value;
 
     if (!nPass) {
-        alert("Enter New Password!!");
+		showNotification("Enter New Password!!", {
+			title: "Warning",
+			variant: "warning", 
+			delay: 2500
+		});
     } else {
         user.password = nPass;
         cPass.innerText = nPass;
         pushStorage(user);
-        alert("Password Changed Successfully");
+		showNotification("Password Changed Successfully", {
+			title: "Saved",
+			variant: "success", 
+			delay: 2500
+		});
     }
 });
 
@@ -78,14 +106,26 @@ dltSubmit.addEventListener("click", (e) => {
     const dlCnfrmUser = document.getElementById("dlCnfrmUser").value;
 
     if(!dlCnfrmUser) {
-        alert("Enter your Username to delete");
+		showNotification("Enter your Username to delete", {
+			title: "Warning",
+			variant: "warning",
+			delay: 2500
+		});
     } else {
         if (dlCnfrmUser == user.name ) {
-            alert("User Deleted Successfully.");
+			showNotification("User Deleted Succesfully", {
+				title: "Saved",
+				variant: "success", 
+				delay: 2500
+			});
             localStorage.clear();
             window.location.href = "./login.html";
         } else {
-            alert("Enter your current Username!");
+			showNotification("Enter your current Username!", {
+				title: "Warning",
+				variant: "warning",
+				delay: 2500
+			});
         }
     }
 })

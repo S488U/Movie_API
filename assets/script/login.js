@@ -1,3 +1,5 @@
+import { showNotification } from "./lib.js";
+
 document.addEventListener("DOMContentLoaded", () => {
 
     let submit;
@@ -10,7 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = document.getElementById("password").value;
 
             if (!name || !email || !password) {
-                alert("Please enter the email and password");
+                showNotification("Please enter the email and password", {
+                    title: "Missing details",
+                    variant: "warning"
+                });
             } else {
                 let user = {
                     name: name,

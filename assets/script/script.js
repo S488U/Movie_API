@@ -1,6 +1,6 @@
 // API
 // https://www.omdbapi.com/?i=tt3896198&apikey=599ded55
-import { escapeHTML } from "./lib.js";
+import { escapeHTML, showNotification } from "./lib.js";
 
 const submitBtn = document.getElementById("submitBtn");
 const xssRegex = /(<\s*script.*?>.*?<\s*\/\s*script\s*>|javascript:|on\w+\s*=|<\s*iframe|<\s*img\s+[^>]*on\w+\s*=|<\s*svg[^>]*>|<\s*link[^>]*>|<\s*body[^>]*>|<\s*embed[^>]*>|<\s*object[^>]*>)/i;
@@ -21,7 +21,11 @@ submitBtn.addEventListener("click", function (event) {
     saveHistory(inputData);
 
     if (inputData === null || inputData === "") {
-        alert("Invalid Input");
+		showNotification("Invalid Input", {
+			title: "Warning",
+			variant: "warning", 
+			delay: 2500
+		});
     } else {
         // const dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
         console.log("clicked");

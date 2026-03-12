@@ -1,4 +1,4 @@
-import { escapeHTML } from "../script/lib.js"
+import { escapeHTML, showNotification } from "../script/lib.js"
 
 let received;
 let area = document.getElementById("dynamicLoad");
@@ -74,6 +74,12 @@ window.addEventListener("DOMContentLoaded", () => {
 					console.log(fav);
 
 					localStorage.setItem("favourite", fav.join(','));
+
+					showNotification("Movie Added Successfully", {
+						title: "Saved",
+						variant: "success", 
+						delay: 2500
+					});
 				});
 
 			})
