@@ -1,4 +1,4 @@
-function handleSize() {
+const handleSize = () => {
     const navbtn = document.querySelector(".navbtntoggle");
     const desktopNav = document.querySelector(".nav");
 

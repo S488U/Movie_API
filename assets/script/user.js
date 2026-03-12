@@ -17,7 +17,7 @@ dlUser.innerHTML = escapeHTML(user.name);
 const userSubmit = document.getElementById("userSubmit");
 userSubmit.addEventListener("click", (e) => {
     e.preventDefault();
-    var nUser = document.getElementById("nUser").value;
+    const nUser = document.getElementById("nUser").value;
 
     if (!nUser) {
         alert("Enter New Username!!");
@@ -36,7 +36,7 @@ const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 emailSubmit.addEventListener("click", (e) => {
     e.preventDefault();
-    var nEmail = nEmailInput.value;
+    const nEmail = nEmailInput.value;
 
     if (!nEmail) {
         alert("Enter New E-mail!!");
@@ -53,7 +53,7 @@ emailSubmit.addEventListener("click", (e) => {
 const passSubmit = document.getElementById("passSubmit");
 passSubmit.addEventListener("click", (e) => {
     e.preventDefault();
-    var nPass = document.getElementById("nPassword").value;
+    const nPass = document.getElementById("nPassword").value;
 
     if (!nPass) {
         alert("Enter New Password!!");
@@ -65,7 +65,7 @@ passSubmit.addEventListener("click", (e) => {
     }
 });
 
-function pushStorage(updatedUser) {
+const pushStorage = (updatedUser)  => {
     localStorage.setItem("userInfo", JSON.stringify(updatedUser));
 }
 
@@ -93,8 +93,8 @@ dltSubmit.addEventListener("click", (e) => {
 const showBoxHis = document.getElementById("showBoxHis");
 
 showBoxHis.addEventListener("click", () => {
-    var gbHis = localStorage.getItem("histories");
-    histories = gbHis.split(',');
+    const gbHis = localStorage.getItem("histories");
+    const histories = gbHis.split(',');
     console.log(histories);
 
     let tableContent = "";
@@ -102,7 +102,7 @@ showBoxHis.addEventListener("click", () => {
         tableContent += showEachHistories(savedHistory);
     });
 
-    var showHistories = document.getElementById("showHistories");
+    const showHistories = document.getElementById("showHistories");
     showHistories.style.display = "block";
     showHistories.innerHTML = `
         <table class="table rounded table-striped table-hover border border-dark">
@@ -112,12 +112,12 @@ showBoxHis.addEventListener("click", () => {
                 </tr>
             </thead>
             <tbody>
-                ${escapeHTML(tableContent)}
+                ${tableContent}
             </tbody>
         </table>
     `;
 });
 
-function showEachHistories(e) {
-    return `<tr><td scope="row">${e}</td></tr>`;
+const showEachHistories = (historyItem) => {
+    return `<tr><td scope="row">${escapeHTML(historyItem)}</td></tr>`;
 }

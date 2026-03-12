@@ -23,7 +23,7 @@ submitBtn.addEventListener("click", function (event) {
     if (inputData === null || inputData === "") {
         alert("Invalid Input");
     } else {
-        // var dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
+        // const dataOutput = (document.getElementById("demo").innerHTML = `<p class="animateLoad">Loading</p>`);
         console.log("clicked");
 
         const apiUrl = "https://www.omdbapi.com/?s=" + inputData + "&apikey=599ded55";
@@ -38,7 +38,7 @@ submitBtn.addEventListener("click", function (event) {
             })
             .then((data) => {
                 console.log(data);
-                var dataOutput = document.getElementById("demo");
+                let dataOutput = document.getElementById("demo");
 
                 if (data.Response === "True") {
                     dataOutput.innerHTML = "";
@@ -88,13 +88,12 @@ submitBtn.addEventListener("click", function (event) {
 });
 
 
-function saveHistory(item) {
-
-    var user = JSON.parse(localStorage.getItem("userInfo"));
+const saveHistory = (item) => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
 
     if (user) {
-        var gethis = localStorage.getItem("histories");
-        var his = gethis ? gethis.split(',') : [];
+        const gethis = localStorage.getItem("histories");
+        const his = gethis ? gethis.split(',') : [];
         his.push(item);
         console.log(his);
 

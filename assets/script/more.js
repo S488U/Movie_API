@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				// localStorage.removeItem("clickedLink");
 
 
-				var user = JSON.parse(localStorage.getItem("userInfo"));
+				const user = JSON.parse(localStorage.getItem("userInfo"));
 				let favId = document.getElementById("favId");
 
 				if (user) {
@@ -67,9 +67,9 @@ window.addEventListener("DOMContentLoaded", () => {
 					event.preventDefault();
 					console.log("clicked");
 
-					var getFav = localStorage.getItem("favourite");
-					var id = received;
-					var fav = getFav ? getFav.split(',') : [];
+					const getFav = localStorage.getItem("favourite");
+					const id = received;
+					const fav = getFav ? getFav.split(',') : [];
 					fav.push(received);
 					console.log(fav);
 

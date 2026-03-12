@@ -1,10 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-    var user = JSON.parse(localStorage.getItem("userInfo"));
+    const user = JSON.parse(localStorage.getItem("userInfo"));
 
     if (user) {
-        var userDisplay = document.querySelectorAll(".userShow");
-        var userLogin = document.querySelectorAll(".user-login");
+        let userDisplay = document.querySelectorAll(".userShow");
+        let userLogin = document.querySelectorAll(".user-login");
 
         if (userDisplay.length > 0) {
             userDisplay.forEach(userElement => {

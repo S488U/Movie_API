@@ -1,6 +1,6 @@
 import { escapeHTML } from "./lib.js";
 
-let user = JSON.parse(localStorage.getItem("userInfo"));
+const user = JSON.parse(localStorage.getItem("userInfo"));
 
 if (user) {
     let fav = localStorage.getItem("favourite");
@@ -9,12 +9,12 @@ if (user) {
     let newFav = Array.from(conFav);
 
 
-    newFav.forEach(async eachElement => {
+    newFav.forEach(async (eachElement) => {
         await favShow(eachElement);
     });
 }
 
-async function favShow(e) {
+const favShow = async (e) => {
     if (e === null || e === "") {
         alert("Favourite is corrupted, Clear cache and Data");
     } else {
