@@ -2,18 +2,6 @@ import { escapeHTML } from "./lib.js";
 
 const user = JSON.parse(localStorage.getItem("userInfo"));
 
-if (user) {
-    let fav = localStorage.getItem("favourite");
-    let favModified = fav.split(',');
-    let conFav = new Set(favModified);
-    let newFav = Array.from(conFav);
-
-
-    newFav.forEach(async (eachElement) => {
-        await favShow(eachElement);
-    });
-}
-
 const favShow = async (e) => {
     if (e === null || e === "") {
         alert("Favourite is corrupted, Clear cache and Data");
@@ -56,4 +44,16 @@ const favShow = async (e) => {
                 console.error("Fetch Error: ", error);
             });
     }
+}
+
+if (user) {
+    let fav = localStorage.getItem("favourite");
+    let favModified = fav.split(',');
+    let conFav = new Set(favModified);
+    let newFav = Array.from(conFav);
+
+
+    newFav.forEach(async (eachElement) => {
+        await favShow(eachElement);
+    });
 }
